@@ -1,11 +1,12 @@
 server:
-  port: 8000
+  port: ${SERVICE_AUTH_PORT:8080}
+
+spring:
+  profiles:
+    active: db
 
 zuul:
   routes:
-    order:
-      path: /api/order/**
-      url: http://localhost:8001/
     users:
       path: /api/users/**
-      url: http://localhost:8003/
+      url: http://localhost:8081/
