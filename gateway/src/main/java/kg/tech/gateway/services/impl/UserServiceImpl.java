@@ -1,6 +1,6 @@
 package kg.tech.gateway.services.impl;
 
-import kg.tech.commons.exceptions.AuthorizationException;
+import kg.tech.commons.exceptions.GatewayException;
 import kg.tech.gateway.entities.User;
 import kg.tech.gateway.mappers.UserMapper;
 import kg.tech.gateway.models.UserModel;
@@ -35,11 +35,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserModel findById(Long id) throws AuthorizationException {
+    public UserModel findById(Long id) throws GatewayException {
         Optional<User> user = userRepository.findById(id);
         return user
                 .map(userMapper::toModel)
-                .orElseThrow(() -> new AuthorizationException("USER_NOT_FOUND"));
+                .orElseThrow(() -> new GatewayException("USER_NOT_FOUND"));
     }
 
     @Override
@@ -51,14 +51,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserModel update(UserModel userModel) {
+    public UserModel update(UserModel userModel) throws GatewayException {
+        if (userModel.getId() == null) throw new GatewayException("Введите id");
         return this.save(userModel);
     }
 
     @Override
-    public void delete(Long id) throws AuthorizationException {
+    public void delete(Long id) throws GatewayException {
         Optional<User> user = userRepository.findById(id);
-        if (user.isEmpty()) throw new AuthorizationException("USER IS ALREADY DELETED");
+        if (user.isEmpty()) throw new GatewayException("USER IS ALREADY DELETED");
         userRepository.delete(user.get());
     }
 

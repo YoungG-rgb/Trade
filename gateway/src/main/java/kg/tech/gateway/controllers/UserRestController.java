@@ -1,6 +1,5 @@
 package kg.tech.gateway.controllers;
 
-import kg.tech.commons.exceptions.AuthorizationException;
 import kg.tech.commons.models.ResponseModel;
 import kg.tech.commons.rest.BaseController;
 import kg.tech.gateway.models.UserModel;
@@ -22,9 +21,23 @@ public class UserRestController extends BaseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseModel<UserModel> findById(@PathVariable Long id) throws AuthorizationException {
+    public ResponseModel<?> findById(@PathVariable("id") Long id) throws Exception {
         return successResponse(userService.findById(id));
     }
 
+    @PostMapping
+    public ResponseModel<UserModel> register(@RequestBody UserModel userModel) {
+        return successResponse(userService.save(userModel));
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseModel<String> delete(@PathVariable Long id) throws Exception {
+        userService.delete(id);
+        return successResponse("OK");
+    }
+
+    @PutMapping
+    public ResponseModel<?> update(@RequestBody UserModel userModel) throws Exception {
+        return successResponse(userService.update(userModel));
+    }
 }

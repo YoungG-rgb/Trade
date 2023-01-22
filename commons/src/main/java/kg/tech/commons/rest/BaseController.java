@@ -16,7 +16,7 @@ public abstract class BaseController {
         ResponseModel<String> responseModel = new ResponseModel<>();
         responseModel.setResult(null);
         responseModel.setDetails(details);
-        responseModel.setResultCode(ResultCode.SUCCESS);
+        responseModel.setResultCode(ResultCode.EXCEPTION);
         return responseModel;
 
     }
