@@ -40,7 +40,7 @@ public class User implements UserDetails {
 
     LocalDate updatedAt;
 
-    @PreUpdate
+    @PrePersist
     public void preUpdate() {
         this.updatedAt = LocalDate.now();
     }

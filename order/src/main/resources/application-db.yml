@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/trade
-    username: ${SERVICE_GATEWAY_DB_USERNAME:postgres}
-    password: ${SERVICE_GATEWAY_DB_PASSWORD:admin}
+    username: ${SERVICE_ORDER_DB_USERNAME:postgres}
+    password: ${SERVICE_ORDER_DB_PASSWORD:admin}
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-timeout: 6000

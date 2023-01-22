@@ -1,0 +1,11 @@
+server:
+  port: ${SERVICE_ORDER_PORT:8081}
+
+spring:
+  profiles:
+    active: db
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${TRADE_USERNAME:trade.service.app@gmail.com}
+    password: ${TRADE_GMAIL_PASS:sbimmaletiwxswin}

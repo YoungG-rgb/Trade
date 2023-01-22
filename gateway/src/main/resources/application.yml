@@ -1,5 +1,5 @@
 server:
-  port: ${SERVICE_AUTH_PORT:8080}
+  port: ${SERVICE_GATEWAY_PORT:8080}
 
 spring:
   profiles:
@@ -7,6 +7,6 @@ spring:
 
 zuul:
   routes:
-    users:
-      path: /api/users/**
+    payment:
+      path: /order/**
       url: http://localhost:8081/
