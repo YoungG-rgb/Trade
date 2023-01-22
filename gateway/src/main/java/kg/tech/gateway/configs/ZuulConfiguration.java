@@ -1,4 +1,4 @@
-package kg.tech.gateway;
+package kg.tech.gateway.configs;
 
 
 import java.lang.reflect.Constructor;
