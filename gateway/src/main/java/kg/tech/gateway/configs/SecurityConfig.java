@@ -33,6 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
+                .antMatchers("/retailment/ext-api/**").permitAll()
 //                .antMatchers("/users").access("hasAnyRole('ROLE_USER','ROLE_ADMIN')")
                 .and().formLogin();
     }

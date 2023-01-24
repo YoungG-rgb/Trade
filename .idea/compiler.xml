@@ -31,7 +31,7 @@
       <module name="notification" target="11" />
       <module name="order" target="11" />
       <module name="payment" target="17" />
-      <module name="retailment" target="11" />
+      <module name="retailment" target="17" />
       <module name="users" target="17" />
     </bytecodeTargetLevel>
   </component>
