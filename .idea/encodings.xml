@@ -7,6 +7,8 @@
     <file url="file://$PROJECT_DIR$/notification/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/payment/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/retailment/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/retailment/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/users/src/main/java" charset="UTF-8" />
   </component>
 </project>

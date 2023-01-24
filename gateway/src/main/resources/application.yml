@@ -7,6 +7,9 @@ spring:
 
 zuul:
   routes:
-    payment:
-      path: /order/**
+    retailment:
+      path: /retailment/**
       url: http://localhost:8081/
+    order:
+      path: /order/**
+      url: http://localhost:8082/

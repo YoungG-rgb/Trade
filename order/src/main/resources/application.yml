@@ -1,5 +1,7 @@
 server:
-  port: ${SERVICE_ORDER_PORT:8081}
+  port: ${SERVICE_ORDER_PORT:8082}
+  servlet:
+    context-path: /order
 
 spring:
   profiles:
