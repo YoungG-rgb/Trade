@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
@@ -19,7 +20,8 @@ public class Image {
     Long id;
 
     @Lob
-    @Column(length = Integer.MAX_VALUE)
-    private byte[] picture;
+    @Type(type = "org.hibernate.type.ImageType")
+    byte[] picture;
 
+    boolean isMain;
 }

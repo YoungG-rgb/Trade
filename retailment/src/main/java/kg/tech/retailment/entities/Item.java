@@ -1,5 +1,6 @@
 package kg.tech.retailment.entities;
 
+import kg.tech.retailment.enums.Color;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,13 +29,25 @@ public class Item {
     Integer count;
     Double rating;
 
+    @Enumerated(value = EnumType.STRING)
+    Color dialColor; // цвет циферблата
+
+    String glass; // стекло
+
+    String waterResistance; // водостойкость
+
+    String straps; // ремень
+
+    int standardBatteryLife;
+
     @Column(length = 500)
     String description;
 
-    boolean active;
+    @Column(columnDefinition = "boolean default true")
+    boolean isActive = true;
 
     @OneToMany(
-            cascade = CascadeType.ALL,
+            cascade = CascadeType.MERGE,
             orphanRemoval = true
     )
     List<Image> images;

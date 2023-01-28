@@ -1,5 +1,6 @@
 package kg.tech.order.entities;
 
+import kg.tech.order.enums.Color;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,13 +26,26 @@ public class Item {
     String name;
 
     BigDecimal price;
+
     Integer count;
+
     Double rating;
+
+    @Enumerated(value = EnumType.STRING)
+    Color dialColor;
+
+    String glass;
+
+    String waterResistance;
+
+    String straps;
+
+    int standardBatteryLife;
 
     @Column(length = 500)
     String description;
 
-    boolean active;
+    boolean isActive;
 
     @OneToMany(
             cascade = CascadeType.ALL,

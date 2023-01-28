@@ -52,15 +52,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserModel update(UserModel userModel) throws GatewayException {
-        if (userModel.getId() == null) throw new GatewayException("Введите id");
+        if (userModel.getId() == null) throw new GatewayException("ID is null");
         return this.save(userModel);
     }
 
     @Override
     public void delete(Long id) throws GatewayException {
-        Optional<User> user = userRepository.findById(id);
-        if (user.isEmpty()) throw new GatewayException("USER IS ALREADY DELETED");
-        userRepository.delete(user.get());
+        Optional<User> userOptional = userRepository.findById(id);
+        if (userOptional.isEmpty()) throw new GatewayException("USER IS ALREADY DELETED");
+        userRepository.delete(userOptional.get());
     }
 
     @Override

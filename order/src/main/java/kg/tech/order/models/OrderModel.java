@@ -27,8 +27,6 @@ public class OrderModel {
 
     List<ItemModel> items;
 
-    Long userId;
-
     public String toEmailString() {
         StringJoiner emailText = new StringJoiner("\n");
 
