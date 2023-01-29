@@ -15,6 +15,6 @@ public abstract class CouponMapper {
     @InheritInverseConfiguration
     public abstract CouponModel toModel(Coupon coupon);
 
-    @Mapping(target = "user", expression = "java( userRepository.findById(id).get() )")
+    @Mapping(target = "user", expression = "java( userRepository.findById(couponModel.getUserId()).get() )")
     public abstract Coupon toEntity(CouponModel couponModel);
 }

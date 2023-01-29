@@ -1,14 +1,18 @@
 package kg.tech.order.services.impl;
 
 import kg.tech.commons.exceptions.OrderException;
+import kg.tech.order.entities.Address;
 import kg.tech.order.entities.Coupon;
 import kg.tech.order.entities.Order;
+import kg.tech.order.entities.User;
 import kg.tech.order.enums.OrderStatus;
 import kg.tech.order.mappers.CouponMapper;
 import kg.tech.order.mappers.OrderMapper;
+import kg.tech.order.models.AddressModel;
 import kg.tech.order.models.OrderModel;
 import kg.tech.order.repositories.CouponRepository;
 import kg.tech.order.repositories.OrderRepository;
+import kg.tech.order.repositories.UserRepository;
 import kg.tech.order.services.CouponService;
 import kg.tech.order.services.EmailSenderService;
 import kg.tech.order.services.OrderService;
@@ -32,9 +36,11 @@ public class OrderServiceImpl implements OrderService {
     OrderMapper orderMapper;
     EmailSenderService emailSenderService;
     CouponRepository couponRepository;
+    private final UserRepository userRepository;
 
     @Override
-    public OrderModel save(OrderModel orderModel, List<Long> coupons) {
+    public OrderModel save(OrderModel orderModel, List<Long> coupons) throws OrderException {
+        if (addressIsExists(orderModel.getUserId())) throw new OrderException("Пожалуйста, укажите адрес");
         if (coupons != null) subtractAndToInvalidity(orderModel, coupons);
 
         emailSenderService.sendToEmail(orderModel.getUserId(), "ORDER", orderModel.toEmailString());
@@ -54,7 +60,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderModel update(OrderModel orderModel) {
+    public OrderModel update(OrderModel orderModel) throws OrderException {
+        if (orderModel.getId() == null) throw new OrderException("ORDER_NOT_FOUND");
         orderRepository.save(orderMapper.toEntity(orderModel));
         return orderModel;
     }
@@ -107,9 +114,16 @@ public class OrderServiceImpl implements OrderService {
     private BigDecimal applyCoupons(List<Long> coupons) {
         return coupons
                 .stream()
-                .map(couponRepository::findByIdAndValidTrue)
+                .map(couponRepository::findByIdAndValidIsTrue)
                 .map(Coupon::getBonus)
                 .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO);
+    }
+
+    private boolean addressIsExists(Long userId) throws OrderException {
+        return userRepository
+                .findById(userId)
+                .orElseThrow(() -> new OrderException("Пользователя не существует"))
+                .getAddress() != null;
     }
 }

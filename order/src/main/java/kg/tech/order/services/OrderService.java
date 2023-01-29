@@ -6,8 +6,8 @@ import kg.tech.order.models.OrderModel;
 import java.util.List;
 
 public interface OrderService {
-    OrderModel save(OrderModel orderModel, List<Long> applyCoupons);
-    OrderModel update(OrderModel orderModel);
+    OrderModel save(OrderModel orderModel, List<Long> applyCoupons) throws OrderException;
+    OrderModel update(OrderModel orderModel) throws OrderException;
     void delete(Long orderId) throws OrderException;
     void changeStatusToSent(Long orderId) throws OrderException;
     void changeStatusToDelivered(Long orderId) throws OrderException;
