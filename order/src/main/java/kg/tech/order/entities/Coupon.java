@@ -1,8 +1,6 @@
 package kg.tech.order.entities;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
@@ -11,6 +9,8 @@ import java.math.BigDecimal;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "coupons")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Coupon {

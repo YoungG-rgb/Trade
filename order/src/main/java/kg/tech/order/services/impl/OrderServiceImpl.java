@@ -1,11 +1,10 @@
 package kg.tech.order.services.impl;
 
 import kg.tech.commons.exceptions.OrderException;
-import kg.tech.order.entities.Address;
-import kg.tech.order.entities.Coupon;
-import kg.tech.order.entities.Order;
-import kg.tech.order.entities.User;
+import kg.tech.commons.utils.BaseValidator;
+import kg.tech.order.entities.*;
 import kg.tech.order.enums.OrderStatus;
+import kg.tech.order.enums.PaymentMethod;
 import kg.tech.order.mappers.CouponMapper;
 import kg.tech.order.mappers.OrderMapper;
 import kg.tech.order.models.AddressModel;
@@ -42,10 +41,21 @@ public class OrderServiceImpl implements OrderService {
     public OrderModel save(OrderModel orderModel, List<Long> coupons) throws OrderException {
         if (addressIsExists(orderModel.getUserId())) throw new OrderException("Пожалуйста, укажите адрес");
         if (coupons != null) subtractAndToInvalidity(orderModel, coupons);
+        if (balanceExists(orderModel)) throw new OrderException("Не хватает средств");
 
         emailSenderService.sendToEmail(orderModel.getUserId(), "ORDER", orderModel.toEmailString());
         orderRepository.save(orderMapper.toEntity(orderModel));
         return orderModel;
+    }
+
+    private boolean balanceExists(OrderModel orderModel) {
+        User user = userRepository.findById(orderModel.getUserId()).get();
+        if (orderModel.getPaymentMethod().equals(PaymentMethod.BALANCE)) {
+            return user.getBalance().compareTo(orderModel.getTotal()) > 0;
+        } else {
+            Card creditCard = user.getCreditCard();
+            return BaseValidator.isNotEmpty(creditCard.getCardNumber(), creditCard.getCVCandCVV()) && creditCard.getExpiryDate() != null;
+        }
     }
 
     private void subtractAndToInvalidity(OrderModel orderModel, List<Long> coupons) {

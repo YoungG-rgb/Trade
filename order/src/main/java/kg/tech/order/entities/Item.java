@@ -1,9 +1,7 @@
 package kg.tech.order.entities;
 
 import kg.tech.order.enums.Color;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
@@ -13,6 +11,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "items")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Item {

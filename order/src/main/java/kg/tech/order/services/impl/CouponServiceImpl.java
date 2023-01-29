@@ -44,7 +44,7 @@ public class CouponServiceImpl implements CouponService {
                 .findAll()
                 .stream()
                 .map(couponMapper::toModel)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
@@ -53,6 +53,6 @@ public class CouponServiceImpl implements CouponService {
                 .findByUserId(userId)
                 .stream()
                 .map(couponMapper::toModel)
-                .collect(Collectors.toList());
+                .toList();
     }
 }

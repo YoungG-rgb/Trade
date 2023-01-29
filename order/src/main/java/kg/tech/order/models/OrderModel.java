@@ -1,6 +1,7 @@
 package kg.tech.order.models;
 
 import kg.tech.order.enums.OrderStatus;
+import kg.tech.order.enums.PaymentMethod;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,7 +28,7 @@ public class OrderModel {
     LocalDate deliverDate;
 
     List<ItemModel> items;
-
+    PaymentMethod paymentMethod;
     Long userId;
 
     public String toEmailString() {

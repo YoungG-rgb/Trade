@@ -1,8 +1,6 @@
 package kg.tech.order.entities;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
@@ -10,6 +8,8 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "phones")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Phone {

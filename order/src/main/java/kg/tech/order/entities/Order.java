@@ -1,9 +1,8 @@
 package kg.tech.order.entities;
 
 import kg.tech.order.enums.OrderStatus;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import kg.tech.order.enums.PaymentMethod;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
@@ -15,6 +14,8 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "orders")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Order {
@@ -31,6 +32,9 @@ public class Order {
 
     LocalDateTime createdAt;
     LocalDate deliverDate;
+
+    @Enumerated(value = EnumType.STRING)
+    PaymentMethod paymentMethod;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(name = "orders_item",
