@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.StringJoiner;
@@ -22,10 +23,12 @@ public class OrderModel {
 
     BigDecimal total;
 
-    LocalDateTime createdAt;
-    LocalDateTime deliverDate;
+    LocalDateTime createdAt = LocalDateTime.now();
+    LocalDate deliverDate;
 
     List<ItemModel> items;
+
+    Long userId;
 
     public String toEmailString() {
         StringJoiner emailText = new StringJoiner("\n");

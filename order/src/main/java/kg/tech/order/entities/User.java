@@ -37,4 +37,8 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "orders_id")})
     List<Order> orders;
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    Address address;
+
+
 }

@@ -20,5 +20,5 @@ public class ItemModel {
     Double rating;
     String description;
     boolean active;
-    List<Image> images;
+    List<Long> imagesId;
 }
