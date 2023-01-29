@@ -40,5 +40,9 @@ public class User {
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     Address address;
 
-
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinTable(name = "users_coupons",
+            joinColumns = {@JoinColumn(name = "users_id")},
+            inverseJoinColumns = {@JoinColumn(name = "coupon_id")})
+    List<Coupon> coupons;
 }

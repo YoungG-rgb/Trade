@@ -1,11 +1,15 @@
 package kg.tech.order.services.impl;
 
 import kg.tech.commons.exceptions.OrderException;
+import kg.tech.order.entities.Coupon;
 import kg.tech.order.entities.Order;
 import kg.tech.order.enums.OrderStatus;
+import kg.tech.order.mappers.CouponMapper;
 import kg.tech.order.mappers.OrderMapper;
 import kg.tech.order.models.OrderModel;
+import kg.tech.order.repositories.CouponRepository;
 import kg.tech.order.repositories.OrderRepository;
+import kg.tech.order.services.CouponService;
 import kg.tech.order.services.EmailSenderService;
 import kg.tech.order.services.OrderService;
 import lombok.AccessLevel;
@@ -13,7 +17,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,12 +31,26 @@ public class OrderServiceImpl implements OrderService {
     OrderRepository orderRepository;
     OrderMapper orderMapper;
     EmailSenderService emailSenderService;
+    CouponRepository couponRepository;
 
     @Override
-    public OrderModel save(OrderModel orderModel) {
+    public OrderModel save(OrderModel orderModel, List<Long> coupons) {
+        if (coupons != null) subtractAndToInvalidity(orderModel, coupons);
+
         emailSenderService.sendToEmail(orderModel.getUserId(), "ORDER", orderModel.toEmailString());
         orderRepository.save(orderMapper.toEntity(orderModel));
         return orderModel;
+    }
+
+    private void subtractAndToInvalidity(OrderModel orderModel, List<Long> coupons) {
+        BigDecimal subtractedTotal = orderModel.getTotal().subtract(applyCoupons(coupons));
+        orderModel.setTotal(subtractedTotal);
+
+        for(Long id: coupons) {
+            Coupon coupon = couponRepository.findById(id).get();
+            coupon.setValid(false);
+            couponRepository.save(coupon);
+        }
     }
 
     @Override
@@ -81,5 +102,14 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository
                 .findById(id)
                 .orElseThrow(() -> new OrderException("ORDER_NOT_FOUND"));
+    }
+
+    private BigDecimal applyCoupons(List<Long> coupons) {
+        return coupons
+                .stream()
+                .map(couponRepository::findByIdAndValidTrue)
+                .map(Coupon::getBonus)
+                .reduce(BigDecimal::add)
+                .orElse(BigDecimal.ZERO);
     }
 }

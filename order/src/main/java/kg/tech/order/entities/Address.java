@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "users")
+@Table(name = "addresses")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Address {
     @Id

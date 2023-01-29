@@ -2,7 +2,6 @@ package kg.tech.order.controllers;
 
 import kg.tech.commons.models.ResponseModel;
 import kg.tech.commons.rest.BaseController;
-import kg.tech.order.entities.Order;
 import kg.tech.order.models.OrderModel;
 import kg.tech.order.services.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +20,8 @@ public class OrderRestController extends BaseController {
     }
 
     @PostMapping
-    public ResponseModel<OrderModel> create(@RequestBody OrderModel orderModel) {
-        return successResponse(orderService.save(orderModel));
+    public ResponseModel<OrderModel> create(@RequestBody OrderModel orderModel,
+                                            @RequestParam(value = "applyCoupons", required = false) List<Long> applyCoupons) {
+        return successResponse(orderService.save(orderModel, applyCoupons));
     }
 }

@@ -45,6 +45,7 @@ public class Item {
     @Column(length = 500)
     String description;
 
+    @Column(columnDefinition = "boolean default true")
     boolean isActive;
 
     @OneToMany(
