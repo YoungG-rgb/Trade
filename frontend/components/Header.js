@@ -5,7 +5,7 @@ const Header = () => {
     const headerMenu = ['Главная','Функции','Наша миссия','О нас','Часы']
 
     return (
-        <header className='flex items-center justify-between'>
+        <header className='flex items-center justify-between main_container'>
             <div className='w-[270px]'>
                 <img className='w-full bg-cover' src="/logo/logo.svg" alt="logo"/>
             </div>
