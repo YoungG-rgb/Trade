@@ -38,24 +38,13 @@ public class OrderServiceImpl implements OrderService {
     private final UserRepository userRepository;
 
     @Override
-    public OrderModel save(OrderModel orderModel, List<Long> coupons) throws OrderException {
-        if (addressIsExists(orderModel.getUserId())) throw new OrderException("Пожалуйста, укажите адрес");
+    public OrderModel save(OrderModel orderModel, List<Long> coupons) throws Exception {
+        validateOrder(orderModel);
         if (coupons != null) subtractAndToInvalidity(orderModel, coupons);
-        if (balanceExists(orderModel)) throw new OrderException("Не хватает средств");
 
-        emailSenderService.sendToEmail(orderModel.getUserId(), "ORDER", orderModel.toEmailString());
+        emailSenderService.send(orderModel.getUserId(), "ORDER", orderModel.toEmailString());
         orderRepository.save(orderMapper.toEntity(orderModel));
         return orderModel;
-    }
-
-    private boolean balanceExists(OrderModel orderModel) {
-        User user = userRepository.findById(orderModel.getUserId()).get();
-        if (orderModel.getPaymentMethod().equals(PaymentMethod.BALANCE)) {
-            return user.getBalance().compareTo(orderModel.getTotal()) > 0;
-        } else {
-            Card creditCard = user.getCreditCard();
-            return BaseValidator.isNotEmpty(creditCard.getCardNumber(), creditCard.getCVCandCVV()) && creditCard.getExpiryDate() != null;
-        }
     }
 
     private void subtractAndToInvalidity(OrderModel orderModel, List<Long> coupons) {
@@ -130,10 +119,21 @@ public class OrderServiceImpl implements OrderService {
                 .orElse(BigDecimal.ZERO);
     }
 
-    private boolean addressIsExists(Long userId) throws OrderException {
-        return userRepository
-                .findById(userId)
+    private void validateOrder(OrderModel orderModel) throws OrderException {
+        User user = userRepository.findById(orderModel.getUserId()).get();
+        Card creditCard = user.getCreditCard();
+
+        if (userRepository
+                .findById(orderModel.getUserId())
                 .orElseThrow(() -> new OrderException("Пользователя не существует"))
-                .getAddress() != null;
+                .getAddress() == null
+        ) throw new OrderException("Пожалуйста, укажите адрес");
+
+        if (switch(orderModel.getPaymentMethod()) {
+            case BALANCE -> user.getBalance().compareTo(orderModel.getTotal()) < 0;
+            case PAYPAL, COD -> false;
+            case CREDIT_CARD ->
+                    BaseValidator.isEmpty( creditCard.getCardNumber(), creditCard.getCVCandCVV() ) && creditCard.getExpiryDate() == null;
+        }) throw new OrderException("Не хватает средств");
     }
 }

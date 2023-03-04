@@ -1,26 +1,19 @@
 package kg.tech.order.configs;
 
-import org.springframework.beans.factory.annotation.Value;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.mail.NoSuchProviderException;
+import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 @Configuration
+@RequiredArgsConstructor
 public class MailSenderConfig {
-
-    @Value("${spring.mail.host}")
-    private String smtpHost;
-
-    @Value("${spring.mail.username}")
-    private String mailFrom;
-
-    @Value("${spring.mail.port}")
-    private int port;
+    private final MailProperty mailProperties;
 
     @Bean
     public MimeMessage mimeMessage(){
@@ -30,16 +23,18 @@ public class MailSenderConfig {
     @Bean
     public Session session(){
         Properties props = new Properties();
-        props.put("mail.smtp.host", smtpHost);
-        props.put("mail.from", mailFrom);
+        props.put("mail.smtp.host", mailProperties.getHost());
+        props.put("mail.from", mailProperties.getUsername());
         props.put("mail.smtp.starttls.enable", "true");
-        props.put("mail.smtp.port", port);
+        props.put("mail.smtp.port", mailProperties.getPort());
 
         return Session.getInstance(props, null);
     }
 
     @Bean
-    public Transport transport() throws NoSuchProviderException {
-        return session().getTransport();
+    public Transport transport() throws MessagingException {
+        Transport transport = session().getTransport();
+        transport.connect(mailProperties.getUsername(), mailProperties.getPassword());
+        return transport;
     }
 }

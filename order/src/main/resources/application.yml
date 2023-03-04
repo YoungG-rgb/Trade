@@ -9,3 +9,4 @@ spring:
     port: 587
     username: ${TRADE_USERNAME:trade.service.app@gmail.com}
     password: ${TRADE_GMAIL_PASS:sbimmaletiwxswin}
+    file_type: ${TRADE_FILE_TYPE:application/vnd.ms-excel}
