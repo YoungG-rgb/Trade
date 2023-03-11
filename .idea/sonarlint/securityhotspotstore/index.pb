@@ -27,8 +27,6 @@ t
 Dgateway/src/main/java/kg/tech/gateway/configs/ZuulConfiguration.java,5\5\55625f217ba0f3c88cec369ecc75a84ad6357211
 b
 2order/src/main/java/kg/tech/order/enums/Color.java,f\1\f1cf4b3bcee264bc88005238cee80bf1869363c5
-=
-order/pom.xml,2\7\27ca9127fd75386d2b0342cfd7de9e3e93791f5b
 x
 Hgateway/src/main/java/kg/tech/gateway/services/impl/RoleServiceImpl.java,3\5\35b31afc711a348cfbac1d9a748dee59a7d84f94
 t

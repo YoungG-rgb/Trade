@@ -6,7 +6,6 @@ import kg.tech.order.domain.entities.Card;
 import kg.tech.order.domain.entities.Coupon;
 import kg.tech.order.domain.entities.Order;
 import kg.tech.order.domain.entities.User;
-import kg.tech.order.entities.*;
 import kg.tech.order.domain.enums.OrderStatus;
 import kg.tech.order.mappers.OrderMapper;
 import kg.tech.order.domain.models.OrderModel;

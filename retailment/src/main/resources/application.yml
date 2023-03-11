@@ -1,0 +1,6 @@
+server:
+  port: ${SERVICE_RETAIL_PORT:8081}
+
+spring:
+  profiles:
+    active: db
