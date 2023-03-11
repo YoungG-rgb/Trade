@@ -2,17 +2,17 @@ package kg.tech.order.services.impl;
 
 import kg.tech.commons.exceptions.OrderException;
 import kg.tech.commons.utils.BaseValidator;
+import kg.tech.order.domain.entities.Card;
+import kg.tech.order.domain.entities.Coupon;
+import kg.tech.order.domain.entities.Order;
+import kg.tech.order.domain.entities.User;
 import kg.tech.order.entities.*;
-import kg.tech.order.enums.OrderStatus;
-import kg.tech.order.enums.PaymentMethod;
-import kg.tech.order.mappers.CouponMapper;
+import kg.tech.order.domain.enums.OrderStatus;
 import kg.tech.order.mappers.OrderMapper;
-import kg.tech.order.models.AddressModel;
-import kg.tech.order.models.OrderModel;
+import kg.tech.order.domain.models.OrderModel;
 import kg.tech.order.repositories.CouponRepository;
 import kg.tech.order.repositories.OrderRepository;
 import kg.tech.order.repositories.UserRepository;
-import kg.tech.order.services.CouponService;
 import kg.tech.order.services.EmailSenderService;
 import kg.tech.order.services.OrderService;
 import lombok.AccessLevel;
@@ -22,8 +22,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service

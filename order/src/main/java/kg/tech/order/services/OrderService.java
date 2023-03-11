@@ -1,7 +1,7 @@
 package kg.tech.order.services;
 
 import kg.tech.commons.exceptions.OrderException;
-import kg.tech.order.models.OrderModel;
+import kg.tech.order.domain.models.OrderModel;
 
 import java.util.List;
 

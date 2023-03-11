@@ -1,6 +1,6 @@
 package kg.tech.order.repositories;
 
-import kg.tech.order.entities.Coupon;
+import kg.tech.order.domain.entities.Coupon;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

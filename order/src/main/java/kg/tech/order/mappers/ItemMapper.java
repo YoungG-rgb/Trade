@@ -1,8 +1,8 @@
 package kg.tech.order.mappers;
 
-import kg.tech.order.entities.Image;
-import kg.tech.order.entities.Item;
-import kg.tech.order.models.ItemModel;
+import kg.tech.order.domain.entities.Image;
+import kg.tech.order.domain.entities.Item;
+import kg.tech.order.domain.models.ItemModel;
 import kg.tech.order.repositories.ImageRepository;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

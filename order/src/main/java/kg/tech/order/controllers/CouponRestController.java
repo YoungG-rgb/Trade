@@ -3,7 +3,7 @@ package kg.tech.order.controllers;
 import kg.tech.commons.exceptions.OrderException;
 import kg.tech.commons.models.ResponseModel;
 import kg.tech.commons.rest.BaseController;
-import kg.tech.order.models.CouponModel;
+import kg.tech.order.domain.models.CouponModel;
 import kg.tech.order.services.CouponService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

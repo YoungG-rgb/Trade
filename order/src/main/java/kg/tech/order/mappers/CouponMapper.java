@@ -1,7 +1,7 @@
 package kg.tech.order.mappers;
 
-import kg.tech.order.entities.Coupon;
-import kg.tech.order.models.CouponModel;
+import kg.tech.order.domain.entities.Coupon;
+import kg.tech.order.domain.models.CouponModel;
 import kg.tech.order.repositories.UserRepository;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

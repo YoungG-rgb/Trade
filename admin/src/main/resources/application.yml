@@ -1,0 +1,9 @@
+server:
+  port: ${SERVICE_ADMIN_PORT:5000}
+
+spring:
+  profiles:
+    active: db
+  data:
+    rest:
+      base-path: /panel

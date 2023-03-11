@@ -2,14 +2,13 @@ package kg.tech.order.services.impl;
 
 import kg.tech.commons.exceptions.OrderException;
 import kg.tech.order.mappers.CouponMapper;
-import kg.tech.order.models.CouponModel;
+import kg.tech.order.domain.models.CouponModel;
 import kg.tech.order.repositories.CouponRepository;
 import kg.tech.order.services.CouponService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

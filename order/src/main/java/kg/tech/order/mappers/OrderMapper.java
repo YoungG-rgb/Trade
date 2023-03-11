@@ -1,9 +1,8 @@
 package kg.tech.order.mappers;
 
-import kg.tech.order.entities.Order;
-import kg.tech.order.models.OrderModel;
+import kg.tech.order.domain.entities.Order;
+import kg.tech.order.domain.models.OrderModel;
 import kg.tech.order.repositories.UserRepository;
-import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;

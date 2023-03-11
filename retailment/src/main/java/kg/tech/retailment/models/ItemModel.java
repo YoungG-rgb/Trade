@@ -36,5 +36,5 @@ public class ItemModel {
 
     boolean isActive;
 
-    List<Long> imagesId;
+    List<ImageModel> imageModels;
 }

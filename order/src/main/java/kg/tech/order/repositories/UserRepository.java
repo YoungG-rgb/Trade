@@ -1,6 +1,6 @@
 package kg.tech.order.repositories;
 
-import kg.tech.order.entities.User;
+import kg.tech.order.domain.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

@@ -13,3 +13,6 @@ zuul:
     order:
       path: /order/**
       url: http://localhost:8082/
+    admin:
+      path: /admin-panel/**
+      url: http://localhost:5000/

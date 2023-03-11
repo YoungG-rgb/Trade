@@ -1,6 +1,6 @@
 package kg.tech.order.repositories;
 
-import kg.tech.order.entities.Order;
+import kg.tech.order.domain.entities.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

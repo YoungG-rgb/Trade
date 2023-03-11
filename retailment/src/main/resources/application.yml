@@ -1,6 +1,0 @@
-server:
-  port: ${SERVICE_RETAILMENT_PORT:8081}
-
-spring:
-  profiles:
-    active: db
