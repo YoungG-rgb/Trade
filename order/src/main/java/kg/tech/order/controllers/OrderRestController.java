@@ -23,7 +23,7 @@ public class OrderRestController extends BaseController {
 
     @PostMapping
     public ResponseModel<OrderModel> create(@RequestParam(value = "applyCoupons", required = false) List<Long> applyCoupons,
-                                            @RequestBody OrderModel orderModel) throws OrderException {
+                                            @RequestBody OrderModel orderModel) throws Exception {
         return successResponse(orderService.save(orderModel, applyCoupons));
     }
 

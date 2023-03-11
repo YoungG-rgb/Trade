@@ -1,6 +1,5 @@
 package kg.tech.gateway.services.impl;
 
-import kg.tech.gateway.entities.Role;
 import kg.tech.gateway.mappers.RoleMapper;
 import kg.tech.gateway.models.RoleModel;
 import kg.tech.gateway.repositories.RoleRepository;

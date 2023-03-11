@@ -1,5 +1,9 @@
-DOCUMENTATION API
-http://localhost:8080/swagger-ui/index.html
+### DOCUMENTATION API
+url| application       
+-------------------------------------------|------------|
+http://localhost:8080/swagger-ui/index.html| GATEWAY
+http://localhost:8081/swagger-ui/index.html#| RETAILMENT
+http://localhost:8082/swagger-ui/index.html#| ORDER
 
 
 FIGMA

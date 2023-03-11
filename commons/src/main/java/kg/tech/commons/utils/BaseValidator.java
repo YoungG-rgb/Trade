@@ -1,10 +1,11 @@
 package kg.tech.commons.utils;
 
 import kg.tech.commons.exceptions.ValidationException;
+import lombok.experimental.UtilityClass;
 
 import java.util.Arrays;
-import java.util.Objects;
 
+@UtilityClass
 public class BaseValidator {
 
     public static final String NUMBER_CHECK_REGEXP = "^996(70|50)+[\\d]{7}";

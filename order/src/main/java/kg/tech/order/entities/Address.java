@@ -1,5 +1,6 @@
 package kg.tech.order.entities;
 
+import kg.tech.order.enums.HouseType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -23,5 +24,7 @@ public class Address {
     String street;
 
     String houseNumber;
-    String houseType;
+
+    @Enumerated(EnumType.STRING)
+    HouseType houseType;
 }

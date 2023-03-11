@@ -6,25 +6,15 @@ import kg.tech.commons.models.ResponseModel;
 public abstract class BaseController {
 
     protected <T> ResponseModel<T> successResponse(T result) {
-        ResponseModel<T> responseModel = new ResponseModel<>();
-        responseModel.setResult(result);
-        responseModel.setResultCode(ResultCode.SUCCESS);
-        return responseModel;
+        return new ResponseModel<>(result, ResultCode.SUCCESS);
     }
 
-    protected <T> ResponseModel<String> exceptionResponse(String details) {
-        ResponseModel<String> responseModel = new ResponseModel<>();
-        responseModel.setResult(null);
-        responseModel.setDetails(details);
-        responseModel.setResultCode(ResultCode.EXCEPTION);
-        return responseModel;
+    protected ResponseModel<String> exceptionResponse(String details) {
+        return new ResponseModel<>(null, ResultCode.EXCEPTION, details);
 
     }
 
-    protected <T> ResponseModel<String> badRequestResponse() {
-        ResponseModel<String> responseModel = new ResponseModel<>();
-        responseModel.setResult(null);
-        responseModel.setResultCode(ResultCode.BAD_REQUEST);
-        return responseModel;
+    protected ResponseModel<String> badRequestResponse() {
+        return new ResponseModel<>(null, ResultCode.BAD_REQUEST);
     }
 }

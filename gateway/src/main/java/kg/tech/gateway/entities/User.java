@@ -38,11 +38,11 @@ public class User implements UserDetails {
     )
     List<Role> roles;
 
-    LocalDate updatedAt;
+    LocalDate createdAt;
 
     @PrePersist
-    public void preUpdate() {
-        this.updatedAt = LocalDate.now();
+    public void prePersist() {
+        this.createdAt = LocalDate.now();
     }
 
     @Override
