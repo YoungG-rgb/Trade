@@ -1,9 +1,11 @@
 ../admin/HELP.md
 target/
-.mvn/wrapper/maven-wrapper.jar
+.mvn
 **/src/main/**/target/
 **/src/test/**/target/
 
+mvnw.cmd
+mvnw
 ### STS ###
 .apt_generated
 .classpath
@@ -32,6 +34,4 @@ build/
 ### VS Code ###
 .vscode/
 
-mvnw.cmd
-mvnw
 retailment.iml
