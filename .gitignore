@@ -37,5 +37,7 @@ build/
 *.log
 *.gz
 
+spring_cloud.iml
+
 ### properties ###
 !**/main/resources/application.properties
