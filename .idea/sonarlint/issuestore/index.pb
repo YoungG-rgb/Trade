@@ -25,12 +25,8 @@ U
 %frontend/public/notFound/notFound.svg,1\8\18aa400edbb7026ae72139c9d272cb69b9cb2622
 t
 Dgateway/src/main/java/kg/tech/gateway/configs/ZuulConfiguration.java,5\5\55625f217ba0f3c88cec369ecc75a84ad6357211
-b
-2order/src/main/java/kg/tech/order/enums/Color.java,f\1\f1cf4b3bcee264bc88005238cee80bf1869363c5
 n
 >commons/src/main/java/kg/tech/commons/rest/BaseController.java,e\c\ec64388aa08a0efd30d0b33b97b75d65fd850073
-f
-6order/src/main/java/kg/tech/order/enums/HouseType.java,5\c\5c8e1e7cf8d3be2ee69ccd7ca7cd533c0b14ce6b
 x
 Hgateway/src/main/java/kg/tech/gateway/services/impl/RoleServiceImpl.java,3\5\35b31afc711a348cfbac1d9a748dee59a7d84f94
 t

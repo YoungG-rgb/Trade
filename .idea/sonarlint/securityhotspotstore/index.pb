@@ -25,15 +25,11 @@ u
 Eorder/src/main/java/kg/tech/order/services/impl/EmailServiceImpl.java,5\0\506c6d18e30ed7c7eb59c70ddaf89b1de367f4ee
 t
 Dgateway/src/main/java/kg/tech/gateway/configs/ZuulConfiguration.java,5\5\55625f217ba0f3c88cec369ecc75a84ad6357211
-b
-2order/src/main/java/kg/tech/order/enums/Color.java,f\1\f1cf4b3bcee264bc88005238cee80bf1869363c5
 x
 Hgateway/src/main/java/kg/tech/gateway/services/impl/RoleServiceImpl.java,3\5\35b31afc711a348cfbac1d9a748dee59a7d84f94
 t
 Dcommons/src/main/java/kg/tech/commons/utils/SpecificationHelper.java,a\c\acbd6fc9e9053c5b3a08b2990b7f6734224de18a
 n
 >commons/src/main/java/kg/tech/commons/rest/BaseController.java,e\c\ec64388aa08a0efd30d0b33b97b75d65fd850073
-f
-6order/src/main/java/kg/tech/order/enums/HouseType.java,5\c\5c8e1e7cf8d3be2ee69ccd7ca7cd533c0b14ce6b
 n
 >commons/src/main/java/kg/tech/commons/utils/BaseValidator.java,6\b\6bf05769c010a1aaf016acd7870b3307075a3072
