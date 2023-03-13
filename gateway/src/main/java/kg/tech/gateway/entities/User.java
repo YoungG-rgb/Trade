@@ -24,10 +24,12 @@ public class User implements UserDetails {
     @SequenceGenerator(name = "USERS_SEQ", sequenceName = "USERS_SEQ", allocationSize = 1)
     Long id;
 
+    @Column(unique = true)
     String username;
 
     String password;
 
+    @Column(unique = true)
     String email;
 
     @ManyToMany(fetch = FetchType.EAGER)

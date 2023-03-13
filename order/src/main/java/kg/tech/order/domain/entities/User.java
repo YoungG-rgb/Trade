@@ -16,6 +16,7 @@ import java.util.List;
 @Table(name = "users")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USERS_SEQ")
     @SequenceGenerator(name = "USERS_SEQ", sequenceName = "USERS_SEQ", allocationSize = 1)
@@ -55,5 +56,6 @@ public class User {
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     Card creditCard;
 
-    
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    Cart cart;
 }

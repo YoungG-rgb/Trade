@@ -24,10 +24,7 @@ public class Cart {
 
     BigDecimal totalAmount;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinTable(name = "carts_users",
-            joinColumns = {@JoinColumn(name = "carts_id")},
-            inverseJoinColumns = {@JoinColumn(name = "users_id")})
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     User user;
 
 }

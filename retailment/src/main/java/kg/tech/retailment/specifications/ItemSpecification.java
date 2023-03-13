@@ -22,8 +22,6 @@ public class ItemSpecification implements Specification<Item> {
         final List<Predicate> predicates = new ArrayList<>();
 
         if (filterPattern.getName() != null) predicates.add(getPredicateByField("name", criteriaBuilder, root));
-        if (filterPattern.getGlass() != null) predicates.add(getPredicateByField("glass", criteriaBuilder, root));
-        if (filterPattern.getStraps() != null) predicates.add(getPredicateByField("straps", criteriaBuilder, root));
 
         return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
     }

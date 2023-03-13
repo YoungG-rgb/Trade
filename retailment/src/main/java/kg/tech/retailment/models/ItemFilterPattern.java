@@ -19,7 +19,5 @@ public class ItemFilterPattern {
     BigDecimal priceFrom;
     Double rating;
     Color dialColor;
-    String straps;
-    String glass;
 
 }
